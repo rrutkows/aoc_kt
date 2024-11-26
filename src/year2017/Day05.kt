@@ -9,9 +9,7 @@ fun main() {
         var pos = 0
         var i = 0
         while (pos < jumps.size) {
-            val next = pos + jumps[pos]
-            jumps[pos] = update(jumps[pos])
-            pos = next
+            pos += jumps[pos].also { jumps[pos] = update(it) }
             i++
         }
 
