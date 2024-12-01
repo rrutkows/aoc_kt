@@ -1,6 +1,7 @@
 import java.math.BigInteger
 import java.security.MessageDigest
 import kotlin.io.path.Path
+import kotlin.io.path.notExists
 import kotlin.io.path.readText
 import kotlin.time.DurationUnit
 import kotlin.time.measureTime
@@ -10,6 +11,17 @@ import kotlin.time.measureTime
  */
 fun readInput(year: Int, day: Int): List<String> {
     val path = String.format("src/year%d/Day%02d.txt", year, day)
+    if (Path(path).notExists()) {
+        val session = Path("session").readText().trim()
+        ProcessBuilder(
+            "curl",
+            "\"https://adventofcode.com/$year/day/$day/input\"",
+            "--cookie", "\"session=$session\"",
+            "--output", "\"$path\""
+        )
+            .start()
+            .waitFor()
+    }
     return Path(path)
         .readText()
         .trim()
