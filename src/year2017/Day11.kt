@@ -1,7 +1,7 @@
 package year2017
 
-import println
 import readInput
+import show
 import kotlin.math.abs
 import kotlin.math.max
 
@@ -42,5 +42,5 @@ fun main() {
     }
 
     val input = readInput(2017, 11).single()
-    part1And2(input).println()
+    show { part1And2(input) }
 }

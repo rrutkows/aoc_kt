@@ -1,7 +1,7 @@
 package year2017
 
-import println
 import readInput
+import show
 import kotlin.math.absoluteValue
 
 private operator fun Pair<Int, Int>.plus(p: Pair<Int, Int>): Pair<Int, Int> =
@@ -101,7 +101,7 @@ fun main() {
     check(part1(23) == 2)
     check(part1(1024) == 31)
     check(part1(1) == 0)
-    part1(input).println()
 
-    part2(input).println()
+    show { part1(input) }
+    show { part2(input) }
 }

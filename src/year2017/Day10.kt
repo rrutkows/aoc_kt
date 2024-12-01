@@ -1,7 +1,7 @@
 package year2017
 
-import println
 import readInput
+import show
 
 fun main() {
     fun sparseHash(lengths: List<Int>, rounds: Int): List<Int> {
@@ -42,6 +42,6 @@ fun main() {
     }
 
     val input = readInput(2017, 10).single()
-    part1(input).println()
-    part2(input).println()
+    show { part1(input) }
+    show { part2(input) }
 }

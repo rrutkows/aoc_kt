@@ -1,8 +1,8 @@
 package year2017
 
 import combinations
-import println
 import readInput
+import show
 
 fun main() {
     fun List<String>.parse() = asSequence()
@@ -24,6 +24,6 @@ fun main() {
     }
 
     val input = readInput(2017, 2)
-    part1(input).println()
-    part2(input).println()
+    show { part1(input) }
+    show { part2(input) }
 }

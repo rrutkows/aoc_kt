@@ -2,6 +2,8 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import kotlin.io.path.Path
 import kotlin.io.path.readText
+import kotlin.time.DurationUnit
+import kotlin.time.measureTime
 
 /**
  * Reads lines from the given input txt file.
@@ -21,10 +23,18 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
     .toString(16)
     .padStart(32, '0')
 
-/**
- * The cleaner shorthand for printing output.
- */
-fun Any?.println() = println(this)
+fun show(solve: () -> Any) {
+    val result: Any
+    val time = measureTime { result = solve() }
+    val unit = sequenceOf(
+        DurationUnit.SECONDS to 1.0,
+        DurationUnit.MILLISECONDS to 1e-3,
+        DurationUnit.MICROSECONDS to 1e-6,
+        DurationUnit.NANOSECONDS to 1e-9
+    )
+        .first { time.toDouble(DurationUnit.SECONDS) > it.second }.first
+    println("$result ${time.toString(unit, 2)}")
+}
 
 fun <T> List<T>.combinations(n: Int = 2): Sequence<List<T>> {
     val indices = Array(n) { 0 }

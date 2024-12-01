@@ -1,7 +1,7 @@
 package year2017
 
-import println
 import readInput
+import show
 
 fun main() {
     fun part1And2(input: String): Pair<Int, Int> {
@@ -30,5 +30,5 @@ fun main() {
     }
 
     val input = readInput(2017, 9).single()
-    part1And2(input).println()
+    show { part1And2(input) }
 }

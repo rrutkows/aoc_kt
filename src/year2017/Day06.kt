@@ -1,7 +1,7 @@
 package year2017
 
-import println
 import readInput
+import show
 
 private fun List<Int>.indexOfMax(): Int {
     var found = -1
@@ -41,5 +41,5 @@ fun main() {
     }
 
     val input = readInput(2017, 6).first()
-    part1And2(input).println()
+    show { part1And2(input) }
 }

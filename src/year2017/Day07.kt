@@ -1,7 +1,7 @@
 package year2017
 
-import println
 import readInput
+import show
 
 fun main() {
     fun part1(input: List<String>): String {
@@ -46,6 +46,6 @@ fun main() {
     }
 
     val input = readInput(2017, 7)
-    part1(input).println()
-    part2(input).println()
+    show { part1(input) }
+    show { part2(input) }
 }

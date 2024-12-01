@@ -1,7 +1,7 @@
 package year2017
 
-import println
 import readInput
+import show
 
 fun main() {
     fun solve(input: List<String>, update: (Int) -> Int): Int {
@@ -20,6 +20,6 @@ fun main() {
     fun part2(input: List<String>) = solve(input) { if (it >= 3) it - 1 else it + 1 }
 
     val input = readInput(2017, 5)
-    part1(input).println()
-    part2(input).println()
+    show { part1(input) }
+    show { part2(input) }
 }

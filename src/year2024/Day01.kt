@@ -1,7 +1,7 @@
 package year2024
 
-import println
 import readInput
+import show
 import kotlin.math.abs
 
 fun main() {
@@ -22,6 +22,6 @@ fun main() {
     }
 
     val input = readInput(2024, 1)
-    part1(input).println()
-    part2(input).println()
+    show { part1(input) }
+    show { part2(input) }
 }
