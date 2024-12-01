@@ -16,10 +16,10 @@ fun main() {
     fun part2(input: List<String>): Int {
         return input.parse()
             .sumOf { x ->
-                val pair = x.combinations()
+                x.combinations()
                     .map { it.max() to it.min() }
                     .first { it.first % it.second == 0 }
-                pair.first / pair.second
+                    .run { first / second }
             }
     }
 
