@@ -17,7 +17,8 @@ fun readInput(year: Int, day: Int): List<String> {
             "curl",
             "\"https://adventofcode.com/$year/day/$day/input\"",
             "--cookie", "\"session=$session\"",
-            "--output", "\"$path\""
+            "--output", "\"$path\"",
+            "--user-agent", "\"https://github.com/rrutkows/aoc_kt by rrutkowski (at) gmail.com\""
         )
             .start()
             .waitFor()

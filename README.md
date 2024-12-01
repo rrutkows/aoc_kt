@@ -4,6 +4,8 @@ Welcome to the Advent of Code[^aoc] Kotlin project created by [rrutkows][github]
 
 In this repository, rrutkows is about to provide solutions for the puzzles using [Kotlin][kotlin] language.
 
+The solutions in this repository download and cache the input data. The automation follows the [guidelines].
+
 If you're stuck with Kotlin-specific questions or anything related to this template, check out the following resources:
 
 - [Kotlin docs][docs]
@@ -23,3 +25,4 @@ If you're stuck with Kotlin-specific questions or anything related to this templ
 [kotlin]: https://kotlinlang.org
 [slack]: https://surveys.jetbrains.com/s3/kotlin-slack-sign-up
 [template]: https://github.com/kotlin-hands-on/advent-of-code-kotlin-template
+[guidelines]: https://www.reddit.com/r/adventofcode/wiki/faqs/automation/
