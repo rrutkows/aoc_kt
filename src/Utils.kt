@@ -15,10 +15,10 @@ fun readInput(year: Int, day: Int): List<String> {
         val session = Path("session").readText().trim()
         ProcessBuilder(
             "curl",
-            "\"https://adventofcode.com/$year/day/$day/input\"",
-            "--cookie", "\"session=$session\"",
-            "--output", "\"$path\"",
-            "--user-agent", "\"https://github.com/rrutkows/aoc_kt by rrutkowski (at) gmail.com\""
+            "https://adventofcode.com/$year/day/$day/input",
+            "--cookie", "session=$session",
+            "--output", path,
+            "--user-agent", "https://github.com/rrutkows/aoc_kt by rrutkowski (at) gmail.com"
         )
             .start()
             .waitFor()
