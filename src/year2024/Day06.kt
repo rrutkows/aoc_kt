@@ -3,8 +3,6 @@ package year2024
 import readInput
 import show
 
-private typealias Coords = Pair<Int, Int>
-
 fun main() {
 
     val directions = listOf(
