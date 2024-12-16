@@ -2,7 +2,6 @@ package year2024
 
 import readInput
 import show
-import java.util.Comparator
 import java.util.PriorityQueue
 
 fun main() {
@@ -46,8 +45,7 @@ fun main() {
     fun part1And2(input: List<String>): Pair<Long, Int> {
         val (walls, start, end) = parse(input)
 
-        val cmprtr = Comparator<QEl> { e1: QEl?, e2: QEl? -> e1!!.v.compareTo(e2!!.v) }
-        val q = PriorityQueue(cmprtr)
+        val q = PriorityQueue<QEl>(compareBy { it.v })
         q.add(QEl(Node(start, 0), 0, listOf(start)))
         val visited = mutableMapOf(Node(start, 0) to 0L)
 
@@ -79,6 +77,5 @@ fun main() {
     }
 
     val input = readInput(2024, 16)
-    show { part1And2(input) }
     show { part1And2(input) }
 }
