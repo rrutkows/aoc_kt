@@ -52,13 +52,16 @@ fun main() {
             line.split(',').let { it[0].toInt() to it[1].toInt() }
         }
 
-        val bytes = allBytes.take(1024).toMutableSet()
-        return allBytes
-            .drop(1024)
-            .first {
-                bytes.add(it)
-                path(bytes) < 0
-            }
+        var s = 0
+        var e = allBytes.lastIndex
+        while (e > s) {
+            val i = s + (e - s) / 2
+            val bytes = allBytes.take(i + 1).toSet()
+            val distance = path(bytes)
+            if (distance >= 0) s = i + 1 else e = i
+        }
+
+        return allBytes[e]
     }
 
     val input = readInput(2024, 18)
