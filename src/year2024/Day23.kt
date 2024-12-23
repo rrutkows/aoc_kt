@@ -6,28 +6,26 @@ import show
 
 fun main() {
     fun part1(input: List<String>): Int {
-        val all = mutableSetOf<String>()
-        val connections = input
-            .map { line ->
-                line
-                    .split("-")
-                    .also {
-                        all.add(it[0])
-                        all.add(it[1])
+        val connections = mutableMapOf<String, MutableList<String>>()
+        input.forEach { line ->
+            val cs = line
+                .split("-")
+            connections.getOrPut(cs[0]) { mutableListOf() }.add(cs[1])
+            connections.getOrPut(cs[1]) { mutableListOf() }.add(cs[0])
+        }
+
+        val seen = mutableSetOf<List<String>>()
+        for ((k, v) in connections) {
+            if (k.startsWith("t")) {
+                for (pair in v.combinations()) {
+                    if (pair[0] in connections[pair[1]]!!) {
+                        seen.add((pair + k).sorted())
                     }
-                    .sorted()
-                    .let { it[0] to it[1] }
+                }
             }
-            .toSet()
-        return all
-            .sorted()
-            .combinations(3)
-            .count { x ->
-                x[0] to x[1] in connections
-                        && x[1] to x[2] in connections
-                        && x[0] to x[2] in connections
-                        && x.any { it.startsWith("t") }
-            }
+        }
+
+        return seen.size
     }
 
     fun part2(input: List<String>): String {
