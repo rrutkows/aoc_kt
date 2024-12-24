@@ -3,5 +3,7 @@
 .kotlin/
 build
 src/**/*.txt
+src/**/*.dot
+src/**/*.dot.svg
 local.properties
 session
