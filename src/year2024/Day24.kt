@@ -11,18 +11,16 @@ fun main() {
     fun part1(input: List<String>): Long {
         val values = mutableMapOf<String, Boolean>()
         val gates = mutableMapOf<String, List<String>>()
+        val operations = mapOf<String, (Boolean, Boolean) -> Boolean>(
+            "AND" to Boolean::and,
+            "OR" to Boolean::or,
+            "XOR" to Boolean::xor
+        )
 
         fun getValue(wire: String): Boolean {
             return values.getOrPut(wire) {
                 val (w1, op, w2) = gates[wire]!!
-                val v1 = getValue(w1)
-                val v2 = getValue(w2)
-                when (op) {
-                    "AND" -> v1 && v2
-                    "OR" -> v1 || v2
-                    "XOR" -> v1 && !v2 || !v1 && v2
-                    else -> error("bad op")
-                }
+                operations[op]!!(getValue(w1), getValue(w2))
             }
         }
 
